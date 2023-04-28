@@ -8,6 +8,12 @@ Install dependecies
 npm install
 ```
 
+Login to your LiveChat Developer Console account
+
+```sh
+npx lcdev login
+```
+
 Open your LiveChat Developer Console app
 
 ```sh
