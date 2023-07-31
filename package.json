@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "dev": "next dev",
     "lint": "next lint",
-    "lcdev": "lcdev"
+    "start": "next start"
   },
   "dependencies": {
     "@livechat/agent-app-sdk": "^1.5.2",
