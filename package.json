@@ -11,7 +11,7 @@
   "dependencies": {
     "@livechat/agent-app-sdk": "^1.5.2",
     "@livechat/design-system": "^0.13.1",
-    "@livechat/developer-sdk": "^1.2.7",
+    "@livechat/developer-sdk": "^1.2.29",
     "@livechat/helpdesk-sdk": "^1.0.3",
     "camelcase": "^6.3.0",
     "next": "12.1.0",
@@ -19,7 +19,7 @@
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "@livechat/developer-cli": "^1.2.9",
+    "@livechat/developer-cli": "^1.2.31",
     "@types/node": "^17.0.21",
     "@types/react": "^17.0.40",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
