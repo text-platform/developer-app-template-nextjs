@@ -12,7 +12,7 @@ type Agent = {
   avatar: string
 }
 
-function Fullscreen() {
+function HelpDeskFullscreen() {
   const developerApp = useDeveloperApp()
   const fullscreenWidget = useHelpDeskFullscreenWidget()
   const [agents, setAgents] = useState<Agent[] | null>(null)
@@ -66,4 +66,4 @@ function Fullscreen() {
   )
 }
 
-export default Fullscreen
+export default HelpDeskFullscreen

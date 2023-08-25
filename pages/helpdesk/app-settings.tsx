@@ -2,7 +2,7 @@ import FullScreenLoader from 'components/FullScreenLoader'
 import ViewContainer from 'components/ViewContainer'
 import useDeveloperApp from 'hooks/app/useDeveloperApp'
 
-function LiveChatFullscreen() {
+function HelpDeskAppSettings() {
   const developerApp = useDeveloperApp()
 
   if (developerApp === null) {
@@ -16,4 +16,4 @@ function LiveChatFullscreen() {
   )
 }
 
-export default LiveChatFullscreen
+export default HelpDeskAppSettings

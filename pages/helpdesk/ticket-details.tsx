@@ -4,7 +4,7 @@ import ViewContainer from 'components/ViewContainer'
 import useDeveloperApp from 'hooks/app/useDeveloperApp'
 import useHelpDeskDetailsWidget from 'hooks/products/helpdesk/useDetailsWidget'
 
-function HelpDeskChatDetails() {
+function HelpDeskTicketDetails() {
   const developerApp = useDeveloperApp()
   const { widget, ticketInfo } = useHelpDeskDetailsWidget()
 
@@ -24,4 +24,4 @@ function HelpDeskChatDetails() {
   )
 }
 
-export default HelpDeskChatDetails
+export default HelpDeskTicketDetails
