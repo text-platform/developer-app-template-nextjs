@@ -11,7 +11,7 @@
   "dependencies": {
     "@livechat/agent-app-sdk": "^1.5.2",
     "@livechat/design-system": "^0.13.1",
-    "@livechat/developer-sdk": "^1.2.41",
+    "@livechat/developer-sdk": "^1.2.43",
     "@livechat/helpdesk-sdk": "^1.0.3",
     "camelcase": "^6.3.0",
     "next": "12.1.0",
