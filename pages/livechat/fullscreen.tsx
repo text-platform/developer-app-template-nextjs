@@ -31,7 +31,7 @@ function LiveChatFullscreen() {
         body: '{}',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `${developerApp.data.authorization?.token_type} ${developerApp.data.authorization?.access_token}`,
+          Authorization: `${developerApp.authorization?.data?.token_type} ${developerApp.authorization?.data?.access_token}`,
         },
       })
         .then((response) => response.json())
