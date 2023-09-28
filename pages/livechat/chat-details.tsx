@@ -8,7 +8,7 @@ function LiveChatChatDetails() {
   const developerApp = useDeveloperApp()
   const { widget, customerProfile } = useLiveChatDetailsWidget()
 
-  if (widget === null || customerProfile === null || !developerApp) {
+  if (widget === null || !developerApp) {
     return <FullScreenLoader />
   }
 
@@ -16,11 +16,15 @@ function LiveChatChatDetails() {
     <ViewContainer>
       <h1>Chat Details widget</h1>
       <Card title="Customer profile">
-        <ul>
-          <li>Name: {customerProfile.name}</li>
-          <li>Country: {customerProfile.geolocation.country}</li>
-          <li>Timezone: {customerProfile.geolocation.timezone}</li>
-        </ul>
+        {customerProfile ? (
+          <ul>
+            <li>Name: {customerProfile.name}</li>
+            <li>Country: {customerProfile.geolocation.country}</li>
+            <li>Timezone: {customerProfile.geolocation.timezone}</li>
+          </ul>
+        ) : (
+          'Loading customer profile ...'
+        )}
       </Card>
     </ViewContainer>
   )
