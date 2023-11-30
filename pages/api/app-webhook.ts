@@ -3,7 +3,7 @@ import camelcase from 'camelcase'
 import lcConfig from '../../livechat.config.json'
 import { DeveloperAppConfig } from '@livechat/developer-sdk'
 
-async function AppWebook(req: NextApiRequest, res: NextApiResponse) {
+async function AppWebhook(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { clientID, licenseID, event, payload } = req.body
     if (clientID !== (lcConfig as DeveloperAppConfig).auth?.clientId) {
@@ -13,32 +13,32 @@ async function AppWebook(req: NextApiRequest, res: NextApiResponse) {
     await WebhooksHandlers[handlerName](licenseID, payload)
   } catch (error) {
     const { message } = error as Error
-    console.log('AppWebook -> error: ', message)
+    console.log('AppWebhook -> error: ', message)
   } finally {
     res.status(200).end()
   }
 }
 
 const WebhooksHandlers = {
-  async applicationInstalled(licenseID: number, payload: { applicationID: string }) {
-    console.log('AppWebook -> applicationInstalled', licenseID, payload)
+  async applicationInstalled(licenseId: number, payload: { applicationId: string }) {
+    console.log('AppWebhook -> applicationInstalled', licenseId, payload)
   },
 
-  async applicationUninstalled(licenseID: number, payload: { applicationID: string }) {
-    console.log('AppWebook -> applicationUninstalled', licenseID, payload)
+  async applicationUninstalled(licenseId: number, payload: { applicationId: string }) {
+    console.log('AppWebhook -> applicationUninstalled', licenseId, payload)
   },
 
-  async paymentActivated(licenseID: number, payload: { paymentID: string; quantity: number }) {
-    console.log('AppWebook -> paymentActivated', licenseID, payload)
+  async paymentActivated(licenseId: number, payload: { paymentId: string; quantity: number }) {
+    console.log('AppWebhook -> paymentActivated', licenseId, payload)
   },
 
-  async paymentCollected(licenseID: number, payload: { paymentID: string; total: number }) {
-    console.log('AppWebook -> paymentCollected', licenseID, payload)
+  async paymentCollected(licenseId: number, payload: { paymentId: string; total: number }) {
+    console.log('AppWebhook -> paymentCollected', licenseId, payload)
   },
 
-  async paymentCancelled(licenseID: number, payload: { paymentID: string }) {
-    console.log('AppWebook -> paymentCancelled', licenseID, payload)
+  async paymentCancelled(licenseId: number, payload: { paymentId: string }) {
+    console.log('AppWebhook -> paymentCancelled', licenseId, payload)
   },
 }
 
-export default AppWebook
+export default AppWebhook
