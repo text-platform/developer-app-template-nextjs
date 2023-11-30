@@ -18,8 +18,8 @@ async function ChatWebhook(req: NextApiRequest, res: NextApiResponse) {
 }
 
 const WebhooksHandlers = {
-  async incoming_chat(organization_id: string, webhook_id: string, payload: unknown) {
-    console.log('ChatWebhook -> incoming_chat', organization_id, webhook_id, payload)
+  async incomingChat(organization_id: string, webhook_id: string, payload: unknown) {
+    console.log('ChatWebhook -> incomingChat', organization_id, webhook_id, payload)
   },
 }
 
