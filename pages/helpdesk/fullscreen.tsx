@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Card, NumericInputField } from '@livechat/design-system'
+import { Card, NumericInput } from '@livechat/design-system-react-components'
 import FullScreenLoader from 'components/FullScreenLoader'
 import ViewContainer from 'components/ViewContainer'
 import useDeveloperApp from 'hooks/app/useDeveloperApp'
@@ -46,18 +46,17 @@ function HelpDeskFullscreen() {
   return (
     <ViewContainer>
       <h1>Fullscreen widget</h1>
-      <NumericInputField
+      <NumericInput
         min={0}
         max={99}
         id="notifications-count"
-        labelText="Notifications count"
         value={String(notificationsCount)}
         onChange={(value) => setNotificationsCount(Number(value))}
       />
       <h3>Agents list:</h3>
       <div className="agents-list">
         {agents.map((agent) => (
-          <Card key={agent.id} title={agent.name} img={agent.avatar}>
+          <Card key={agent.id} title={agent.name} src={agent.avatar}>
             {agent.role}
           </Card>
         ))}

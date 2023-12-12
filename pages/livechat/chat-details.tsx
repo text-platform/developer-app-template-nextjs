@@ -1,4 +1,4 @@
-import { Card } from '@livechat/design-system'
+import { Card } from '@livechat/design-system-react-components'
 import FullScreenLoader from 'components/FullScreenLoader'
 import ViewContainer from 'components/ViewContainer'
 import useDeveloperApp from 'hooks/app/useDeveloperApp'

@@ -1,6 +1,6 @@
-import { Card } from '@livechat/design-system'
+import { Card } from '@livechat/design-system-react-components'
 import { IRichMessage } from '@livechat/agent-app-sdk'
-import { Button } from '@livechat/design-system'
+import { Button } from '@livechat/design-system-react-components'
 import FullScreenLoader from 'components/FullScreenLoader'
 import ViewContainer from 'components/ViewContainer'
 import useLiveChatMessageBoxWidget from 'hooks/products/livechat/useMessageBoxWidget'

@@ -1,4 +1,4 @@
-import { Loader } from '@livechat/design-system'
+import { Loader } from '@livechat/design-system-react-components'
 
 function FullScreenLoader() {
   return (
