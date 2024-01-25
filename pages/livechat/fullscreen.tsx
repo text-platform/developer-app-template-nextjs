@@ -34,7 +34,13 @@ function LiveChatFullscreen() {
           Authorization: `${developerApp.authorization?.data?.token_type} ${developerApp.authorization?.data?.access_token}`,
         },
       })
-        .then((response) => response.json())
+        .then(async (response) => {
+          if (response.ok) {
+            return await response.json()
+          }
+
+          return []
+        })
         .then(setAgents)
     }
   }, [developerApp])
