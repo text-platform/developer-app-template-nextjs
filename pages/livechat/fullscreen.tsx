@@ -4,18 +4,12 @@ import FullScreenLoader from 'components/FullScreenLoader'
 import ViewContainer from 'components/ViewContainer'
 import useDeveloperApp from 'hooks/app/useDeveloperApp'
 import useLiveChatFullscreenWidget from 'hooks/products/livechat/useFullscreenWidget'
-
-type Agent = {
-  id: string
-  name: string
-  role: string
-  avatar: string
-}
+import { AgentConfigurationDto, LiveChatConfigurationApiError } from '@livechat/developer-studio-api'
 
 function LiveChatFullscreen() {
   const developerApp = useDeveloperApp()
   const fullscreenWidget = useLiveChatFullscreenWidget()
-  const [agents, setAgents] = useState<Agent[] | null>(null)
+  const [agents, setAgents] = useState<AgentConfigurationDto[] | null>(null)
   const [notificationsCount, setNotificationsCount] = useState(0)
 
   useEffect(() => {
@@ -25,28 +19,22 @@ function LiveChatFullscreen() {
   }, [fullscreenWidget, notificationsCount])
 
   useEffect(() => {
-    if (developerApp && developerApp.authorization?.data) {
-      fetch(`${developerApp.urls.liveChatApi}/configuration/action/list_agents`, {
-        method: 'POST',
-        body: '{}',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `${developerApp.authorization.data.token_type} ${developerApp.authorization.data.access_token}`,
-        },
-      })
-        .then(async (response) => {
-          const data = await response.json();
-
-          if (response.ok) {
-            return data
-          }
-
-          await developerApp.features.reporting.sendError("4xx", `Problem with agent list request [${data.error?.message ?? response.status}]`)
-
-          return []
-        })
-        .then(setAgents)
+    if (!developerApp?.authorization) {
+      return
     }
+
+    developerApp.api.products.livechat.configuration.agents
+      .getAgents()
+      .then(({ data }) => {
+        setAgents(data)
+      })
+      .catch(async (error) => {
+        const apiError = error.response.data.error as LiveChatConfigurationApiError | undefined
+        const eventMessage = apiError ? `${apiError.type}: ${apiError.message}` : 'Unknown error'
+
+        await developerApp.features.reports.sendError('4xx', eventMessage)
+
+      })
   }, [developerApp])
 
   if (fullscreenWidget === null || developerApp === null || agents === null) {

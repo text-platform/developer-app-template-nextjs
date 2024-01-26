@@ -10,7 +10,6 @@ function useDeveloperApp() {
   useEffect(() => {
     const app = DeveloperApp.init(config)
 
-    app.authorization
     if (config.auth?.clientId) {
       app.authorize().then(() => setDeveloperApp(app))
     } else {
