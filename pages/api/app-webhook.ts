@@ -6,7 +6,7 @@ import { DeveloperAppConfig } from '@livechat/developer-sdk'
 async function AppWebhook(req: NextApiRequest, res: NextApiResponse) {
   try {
     const { clientID, licenseID, event, payload } = req.body
-    if (clientID !== (lcConfig as DeveloperAppConfig).auth?.clientId) {
+    if (clientID !== (lcConfig as DeveloperAppConfig).blocks?.authorization?.clientId) {
       throw new Error('Unauthorized')
     }
     const handlerName = camelcase(event) as keyof typeof WebhooksHandlers
