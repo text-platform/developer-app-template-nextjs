@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import { AppProvider } from "@livechat/developer-ui-react";
 import { AppConfig } from "@livechat/developer-sdk";
 
-import config from "../livechat.config.json";
+import config from "livechat.config.json";
 
 import "./globals.css";
 
@@ -21,7 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AppProvider config={config as AppConfig}>{children}</AppProvider>
+        <AppProvider config={config as unknown as AppConfig}>
+          {children}
+        </AppProvider>
       </body>
     </html>
   );

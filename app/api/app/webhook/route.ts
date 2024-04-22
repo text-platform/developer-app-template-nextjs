@@ -1,6 +1,6 @@
 import { AppConfig } from "@livechat/developer-sdk";
 import camelcase from "camelcase";
-import lcConfig from "../../../../livechat.config.json";
+import lcConfig from "livechat.config.json";
 
 export async function POST(req: Request) {
   try {

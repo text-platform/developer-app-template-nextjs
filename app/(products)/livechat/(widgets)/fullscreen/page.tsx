@@ -1,14 +1,18 @@
 "use client";
 
-import { Card, NumericInput } from "@livechat/design-system-react-components";
-import { useApp, useLiveChatFullscreen } from "@livechat/developer-ui-react";
 import { useEffect, useState } from "react";
+import { Card, NumericInput } from "@livechat/design-system-react-components";
+import {
+  useApp,
+  useLiveChatFullscreen,
+  LiveChatFullscreenProvider,
+} from "@livechat/developer-ui-react";
 import {
   AgentConfigurationDto,
   LiveChatConfigurationApiError,
 } from "@livechat/developer-studio-api";
 
-export default function Page() {
+function Widget() {
   const { app } = useApp();
   const { widget } = useLiveChatFullscreen();
 
@@ -62,5 +66,13 @@ export default function Page() {
           : "Loading agents..."}
       </div>
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <LiveChatFullscreenProvider>
+      <Widget />
+    </LiveChatFullscreenProvider>
   );
 }

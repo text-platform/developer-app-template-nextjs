@@ -1,7 +1,7 @@
 "use client";
 
-import createMomentsSDK, { MomentsSDK } from "@livechat/moments-sdk";
 import { useEffect, useState } from "react";
+import createMomentsSDK, { MomentsSDK } from "@livechat/moments-sdk";
 
 function LiveChatTestMoment() {
   const [moment, setMoment] = useState<MomentsSDK>();

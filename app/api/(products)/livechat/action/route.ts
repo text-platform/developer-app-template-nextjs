@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 type ChatActionPayload = {
   licence_id: string;
   agent_id: string;
@@ -20,6 +21,8 @@ type ChatActionPayload = {
 };
 
 export async function GET(req: Request) {
+  console.log(req.url);
+
   return new Response("OK!", {
     status: 200,
   });

@@ -1,18 +1,23 @@
 "use client";
 
-import { NumericInput } from "@livechat/design-system-react-components";
-import { useApp, useHelpDeskFullscreen } from "@livechat/developer-ui-react";
 import { useEffect, useState } from "react";
+import { NumericInput } from "@livechat/design-system-react-components";
+import {
+  useApp,
+  useHelpDeskFullscreen,
+  HelpDeskFullscreenProvider,
+} from "@livechat/developer-ui-react";
 
-export default function Page() {
+function Widget() {
   const { app } = useApp();
   const { widget } = useHelpDeskFullscreen();
-
   const [notificationsCount, setNotificationsCount] = useState(0);
 
   useEffect(() => {
     widget.setNotificationBadge(notificationsCount);
   }, [widget, notificationsCount]);
+
+  console.log(app);
 
   return (
     <div>
@@ -25,5 +30,13 @@ export default function Page() {
         onChange={(value) => setNotificationsCount(Number(value))}
       />
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <HelpDeskFullscreenProvider>
+      <Widget />
+    </HelpDeskFullscreenProvider>
   );
 }
