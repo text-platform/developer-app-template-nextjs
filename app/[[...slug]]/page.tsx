@@ -1,27 +1,15 @@
 import React from "react";
-import { getAppPageFromSlug, getAppPagePaths } from "@livechat/developer-sdk";
-import { Hero } from "../../components/Hero";
-import { Stats } from "../../components/Stats";
+import { getAppPageFromSlug } from "@livechat/developer-sdk";
 import {
   AppWidgetProvider,
   AppWidgetProviderKey,
 } from "@livechat/developer-ui-react";
 import { notFound } from "next/navigation";
 
-const componentMap = {
-  hero: Hero,
-  stats: Stats,
-};
-
-export function getStaticPaths() {
-  const paths = ["/", ...getAppPagePaths()];
-
-  return { paths, fallback: false };
-}
+const componentMap = {};
 
 interface Section {
   type: keyof typeof componentMap;
-  // Add other properties as needed
 }
 
 export default function Page({ params }: { params: { slug: string } }) {
@@ -41,7 +29,9 @@ export default function Page({ params }: { params: { slug: string } }) {
     >
       {page.sections?.length ? (
         (page.sections as Section[]).map((section, index) => {
-          const Component = componentMap[section.type];
+          const Component = componentMap[
+            section.type
+          ] as () => React.JSX.Element;
 
           if (!Component) {
             return <>Not found</>;
