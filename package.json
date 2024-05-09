@@ -12,7 +12,7 @@
     "@livechat/agent-app-sdk": "^1.8.0",
     "@livechat/design-system-react-components": "^1.12.0",
     "@livechat/developer-sdk": "^2.0.36",
-    "@livechat/developer-ui-react": "^0.0.37",
+    "@livechat/developer-ui-react": "^0.0.45",
     "@livechat/helpdesk-sdk": "^1.0.3",
     "@livechat/moments-sdk": "^1.8.2",
     "camelcase": "^6.3.0",
